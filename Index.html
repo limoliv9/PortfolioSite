@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oliver Lim — Vendor Risk &amp; Security Analyst</title>
+<meta name="description" content="Oliver Lim — Cybersecurity specialist building toward penetration testing. Vendor risk management, security automation, and offensive security practice.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050705'/%3E%3Ctext x='50' y='68' font-size='52' font-family='monospace' fill='%2339ff88' text-anchor='middle'%3EOL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ BOOT SEQUENCE ============ -->
+<div class="boot-sequence" id="boot-sequence" aria-hidden="true">
+  <pre class="boot-text" id="boot-text"></pre>
+</div>
+
+<!-- ============ CRT / SCANLINE OVERLAY ============ -->
+<div class="scanlines" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+
+<!-- ============ SVG ICON SPRITE ============ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+<g id="icon-shield" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6L12 2.5Z"/>
+  <path d="m8.5 12 2.4 2.4L15.8 9.4"/>
+</g>
+<g id="icon-terminal" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="4.5" width="18" height="15" rx="2"/>
+  <path d="m7 9 3.5 3L7 15"/>
+  <path d="M13 15h4"/>
+</g>
+<g id="icon-code" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m8.5 8-4 4 4 4"/>
+  <path d="m15.5 8 4 4-4 4"/>
+  <path d="m13.5 5-3 14"/>
+</g>
+<g id="icon-briefcase" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="7.5" width="18" height="12" rx="2"/>
+  <path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/>
+  <path d="M3 12.5h18"/>
+  <path d="M10.5 12.5h3V14h-3z"/>
+</g>
+<g id="icon-cap" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 8.5 12 4l10 4.5-10 4.5-10-4.5Z"/>
+  <path d="M6 10.7v4.3c0 1.8 2.7 3.3 6 3.3s6-1.5 6-3.3v-4.3"/>
+  <path d="M20.5 9v6"/>
+</g>
+<g id="icon-award" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="9" r="6"/>
+  <path d="m8.5 14-1.5 6.5L12 18l5 2.5L15.5 14"/>
+</g>
+<g id="icon-mail" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="5.5" width="18" height="13" rx="2"/>
+  <path d="m4 7 8 6 8-6"/>
+</g>
+<g id="icon-phone" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z"/>
+</g>
+<g id="icon-linkedin" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/>
+  <path d="M7.5 10.5v6M7.5 8v.01M12 16.5v-4c0-1.2.9-2 2.2-2 1.2 0 1.8.9 1.8 2.4v3.6"/>
+</g>
+<g id="icon-chevron-down" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m6 9 6 6 6-6"/>
+</g>
+<g id="icon-sun" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="4"/>
+  <path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/>
+</g>
+<g id="icon-moon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/>
+</g>
+<g id="icon-menu" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+  <path d="M4 6.5h16M4 12h16M4 17.5h16"/>
+</g>
+<g id="icon-close" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+  <path d="m5 5 14 14M19 5 5 19"/>
+</g>
+<g id="icon-wifi" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3.5 8.5a13 13 0 0 1 17 0"/>
+  <path d="M6.5 12a9 9 0 0 1 11 0"/>
+  <path d="M9.5 15.5a5 5 0 0 1 5 0"/>
+  <circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/>
+</g>
+<g id="icon-chart" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 19.5h16"/>
+  <path d="m4 15 4.5-5 3.5 3 5.5-7"/>
+  <path d="M14 6h4v4"/>
+</g>
+<g id="icon-lock" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="4.5" y="10.5" width="15" height="10" rx="2"/>
+  <path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/>
+  <circle cx="12" cy="15" r="1.4" fill="currentColor" stroke="none"/>
+</g>
+<g id="icon-users" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="9" cy="8.5" r="3"/>
+  <path d="M3.5 19c.7-3.3 2.9-5 5.5-5s4.8 1.7 5.5 5"/>
+  <circle cx="17" cy="9" r="2.3"/>
+  <path d="M15.8 14.2c2.1.3 3.7 1.9 4.2 4.3"/>
+</g>
+<g id="icon-target" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8.5"/>
+  <circle cx="12" cy="12" r="5"/>
+  <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+</g>
+<g id="icon-arrow-up-right" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 17 17 7M9 7h8v8"/>
+</g>
+<g id="icon-send" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 3 3 10.5l7.5 2.5L13 20.5 21 3Z"/>
+  <path d="M10.5 13 21 3"/>
+</g>
+<g id="icon-pin" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 21.5S5 14.8 5 9.9a7 7 0 0 1 14 0c0 4.9-7 11.6-7 11.6Z"/>
+  <circle cx="12" cy="9.8" r="2.4"/>
+</g>
+</defs>
+</svg>
+
+<!-- ============ CURSOR GLOW (decorative) ============ -->
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="site-header" id="site-header">
+  <nav class="nav container" aria-label="Primary">
+    <a href="#home" class="logo" aria-label="Oliver Lim — home">
+      <span class="logo-mark">OL<span class="logo-dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#experience" data-nav>Experience</a></li>
+      <li><a href="#skills" data-nav>Skills</a></li>
+      <li><a href="#projects" data-nav>Projects</a></li>
+      <li><a href="#certifications" data-nav>Certifications</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <svg width="19" height="19"><use href="#icon-moon"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <svg width="22" height="22"><use href="#icon-menu"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <canvas id="matrix-rain" aria-hidden="true"></canvas>
+    <canvas id="network-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow reveal">
+          <span class="eyebrow-dot"></span> <span class="eyebrow-prompt">status --check</span> &middot; online &middot; Tacoma, WA
+        </p>
+        <h1 class="hero-title reveal">
+          Hi, I'm <span class="glitch text-gradient" data-text="Oliver Lim">Oliver Lim</span>.
+        </h1>
+
+        <div class="terminal-card reveal">
+          <div class="terminal-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <span class="terminal-title">oliver@portfolio:~</span>
+          </div>
+          <div class="terminal-body">
+            <p class="terminal-line"><span class="prompt">$</span> whoami</p>
+            <p class="terminal-line terminal-output"><span class="prompt">&gt;</span> <span id="typewriter" class="typewriter"></span><span class="caret" aria-hidden="true">&nbsp;</span></p>
+          </div>
+        </div>
+
+        <p class="hero-desc reveal">
+          I work in cybersecurity — A Student of GLobal Cybersecurity at Western Washington University —
+          Proven History of automation that streamlined manual processes.
+          Six years of warehouse experience on the Costco floor. Completed an Internship
+          securing third-party vendors in Vendor Risk Management. Now I'm studying
+          toward a cybersecurity degree and a career on the offensive side of the fence —
+          pen-testing.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#projects" class="btn btn-primary">
+            View my work
+            <svg width="16" height="16"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <div class="hero-socials reveal">
+          <a href="mailto:lim.oliv9@gmail.com" class="social-link" aria-label="Email Oliver Lim">
+            <svg width="18" height="18"><use href="#icon-mail"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/oliver-lim-34040a2a3" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Oliver Lim on LinkedIn">
+            <svg width="18" height="18"><use href="#icon-linkedin"/></svg>
+          </a>
+          <a href="tel:+12537090092" class="social-link" aria-label="Call Oliver Lim">
+            <svg width="18" height="18"><use href="#icon-phone"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-photo reveal">
+        <div class="hero-photo-frame">
+          <img src="img/hero-portrait.jpg?v=4" alt="Oliver Lim" width="999" height="1200" loading="eager">
+          <span class="hero-photo-tag"><span class="eyebrow-dot"></span> oliver_lim.jpg</span>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to about section">
+      <svg width="22" height="22"><use href="#icon-chevron-down"/></svg>
+    </a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <p class="section-kicker reveal">root@oliver:~$ cat about.md</p>
+      <h2 class="section-title reveal">From the warehouse floor to cybersecurity.</h2>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p>
+            I'm a <strong>cybersecurity specialist</strong> with a growing background
+            across risk, AI automation, and offensive security. Right now that means
+            vendor risk management &mdash; assessing the vendors an enterprise depends
+            on and automating the compliance grind that slows security teams down
+            &mdash; but I'm building toward a career on the other side of the fence:
+            penetration testing. That range is backed by six years of high-pressure
+            operational experience at Costco, where I learned how a large business
+            operates.
+          </p>
+
+          <div class="about-lists">
+            <div class="about-list-block">
+              <p class="about-list-title">$ cat done.log</p>
+              <ul class="about-list">
+                <li><span class="about-check">[x]</span> Reviewed SOC&nbsp;2, ISO&nbsp;27001, and PCI documentation across formal vendor risk assessments</li>
+                <li><span class="about-check">[x]</span> Built 3 self-initiated automation tools that cut manual compliance tracking by <strong>~75%</strong></li>
+                <li><span class="about-check">[x]</span> Presented that work directly to Costco's CIO</li>
+                <li><span class="about-check">[x]</span> Completed an A.S. in Global Cybersecurity &mdash; 3.9 GPA, President's Honor Roll</li>
+                <li><span class="about-check">[x]</span> Earned the VCCC NCYTE Certificate (Active Directory, firewalls, network design)</li>
+              </ul>
+            </div>
+            <div class="about-list-block">
+              <p class="about-list-title">$ cat doing.log</p>
+              <ul class="about-list">
+                <li><span class="about-check about-check--pending">[ ]</span> Working in vendor risk management &amp; compliance as an intern in Costco IT</li>
+                <li><span class="about-check about-check--pending">[ ]</span> Pursuing a B.A.S. in Global Cybersecurity at Western Washington University</li>
+                <li><span class="about-check about-check--pending">[ ]</span> Studying for the CompTIA Security+ exam</li>
+                <li><span class="about-check about-check--pending">[ ]</span> Practicing offensive security on TryHackMe &amp; Hack The Box</li>
+                <li><span class="about-check about-check--pending">[ ]</span> Working toward a full-time move into penetration testing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-side reveal">
+          <div class="about-facts">
+            <div class="fact-card">
+              <svg width="20" height="20"><use href="#icon-pin"/></svg>
+              <div>
+                <p class="fact-label">Based in</p>
+                <p class="fact-value">Tacoma, WA</p>
+              </div>
+            </div>
+            <div class="fact-card">
+              <svg width="20" height="20"><use href="#icon-cap"/></svg>
+              <div>
+                <p class="fact-label">Studying</p>
+                <p class="fact-value">B.A.S. Global Cybersecurity, WWU</p>
+              </div>
+            </div>
+            <div class="fact-card">
+              <svg width="20" height="20"><use href="#icon-shield"/></svg>
+              <div>
+                <p class="fact-label">Currently</p>
+                <p class="fact-value">Vendor Risk Management</p>
+              </div>
+            </div>
+            <div class="fact-card">
+              <svg width="20" height="20"><use href="#icon-target"/></svg>
+              <div>
+                <p class="fact-label">Working toward</p>
+                <p class="fact-value">Penetration Testing</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="about-photo">
+            <img src="img/with-ceo.jpg" alt="Oliver Lim with Costco President and CEO Ron Vachris" width="825" height="1100" loading="lazy">
+            <figcaption><span class="about-photo-tag">[ moment ]</span> With Costco President &amp; CEO Ron Vachris</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="vrm-badge reveal">
+        <svg width="16" height="16"><use href="#icon-shield"/></svg>
+        <span>Vendor Risk Management &mdash; Impact</span>
+      </div>
+      <div class="stat-row reveal">
+        <div class="stat">
+          <span class="stat-num" data-count="75">0</span><span class="stat-suffix">%</span>
+          <p>Manual compliance labor eliminated via self-built automation</p>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="81">0</span>
+          <p>PCI ROC vendors covered by the compliance alerting system</p>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="900">0</span>
+          <p>Employees verified through the automated cross-check tool</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <p class="section-kicker reveal">$ ls -la ./experience ./education</p>
+      <h2 class="section-title reveal">Where the skills came from.</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" data-icon="briefcase"></div>
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div>
+                <h3>Vendor Risk Management Intern</h3>
+                <p class="timeline-org">Costco IT &middot; Issaquah, WA</p>
+              </div>
+              <span class="timeline-date">Jun 2026 &ndash; Present</span>
+            </div>
+            <ul class="timeline-list">
+              <li>Assesses the security controls of third-party vendors to ensure security compliance.</li>
+              <li>Review vendor compliance documentation &mdash; SOC&nbsp;2 reports, ISO certifications, and PCI documentation &mdash; as part of formal vendor risk assessments.</li>
+              <li>Self-identified a manual, time-consuming compliance-tracking gap and independently built an automated alerting system (JavaScript / Google Apps Script) that syncs with Google Sheets, flags expired vendor documents, and auto-emails vendors &mdash; covering <strong>81 PCI ROC vendors</strong>.</li>
+              <li>Built an AI-powered contract analysis tool using Gemini Gems to support contract and security-language review.</li>
+              <li>Built an employee verification tool that cross-checked vendor-submitted documentation against employment status for <strong>900 employees</strong>.</li>
+              <li>These self-initiated tools cut manual compliance-tracking labor by roughly <strong>75%</strong> &mdash; presented directly to Costco's CIO.</li>
+              <li>Work daily inside Onspring (GRC platform) and CARTS (ticketing) as part of the vendor risk workflow.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" data-icon="users"></div>
+          <div class="timeline-card timeline-card--photo">
+            <div class="timeline-card-main">
+              <div class="timeline-head">
+                <div>
+                  <h3>Member Service</h3>
+                  <p class="timeline-org">Costco Wholesale &middot; Federal Way, WA</p>
+                </div>
+                <span class="timeline-date">Sep 2020 &ndash; Jun 2026</span>
+              </div>
+              <ul class="timeline-list">
+                <li>Performed the full range of duties across seven departments: Front End, Membership, Tire Shop, Morning Merchandising, Gas Station, Security, and Cashier.</li>
+                <li>Recognized as Costco Employee of the Month; regularly trained new employees.</li>
+                <li>Sustained ~6 years of tenure across rotating departments &mdash; the foundation for the adaptability and stakeholder communication I bring to risk work today.</li>
+              </ul>
+            </div>
+            <figure class="timeline-photo">
+              <img src="img/employee-of-the-month.jpg" alt="Oliver Lim holding his Costco Employee of the Month certificate" width="825" height="1100" loading="lazy">
+              <figcaption><span class="about-photo-tag">[ award ]</span> Employee of the Month &mdash; Jan 2024</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" data-icon="cap"></div>
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div>
+                <h3>B.A.S., Global Cybersecurity</h3>
+                <p class="timeline-org">Western Washington University &middot; Kirkland, WA</p>
+              </div>
+              <span class="timeline-date">Jul 2026 &ndash; Jun 2028 (expected)</span>
+            </div>
+            <ul class="timeline-list">
+              <li>In-progress bachelor's degree building on an associate's in the same field.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" data-icon="cap"></div>
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div>
+                <h3>A.S., Global Cybersecurity</h3>
+                <p class="timeline-org">Highline College</p>
+              </div>
+              <span class="timeline-date">Sep 2022 &ndash; Jul 2026</span>
+            </div>
+            <ul class="timeline-list">
+              <li>Completed with a <strong>3.9 GPA</strong>; named to the President's Honor Roll.</li>
+              <li>Started in Computer Science before moving into Global Cybersecurity &mdash; the origin of the programming background in C#, Python, and JavaScript.</li>
+              <li>Earned the VCCC NCYTE Certificate in Global Cybersecurity, covering Active Directory management, firewall configuration, and network design.</li>
+              <li>Competed in Capture the Flag competitions through the college's cybersecurity program, plus independent practice on TryHackMe and Hack The Box.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <p class="section-kicker reveal">$ ./skills.sh --list</p>
+      <h2 class="section-title reveal">Skills, by the work they support.</h2>
+      <p class="section-lede reveal">Filter by category — every tag below has been used in real coursework, CTF practice, or on the job at Costco IT.</p>
+
+      <div class="skills-tabs reveal" role="tablist" aria-label="Skill categories">
+        <button class="skill-tab is-active" role="tab" aria-selected="true" data-cat="all">All</button>
+        <button class="skill-tab" role="tab" aria-selected="false" data-cat="pentest">Security &amp; Pentest</button>
+        <button class="skill-tab" role="tab" aria-selected="false" data-cat="risk">Vendor Risk &amp; GRC</button>
+        <button class="skill-tab" role="tab" aria-selected="false" data-cat="dev">Programming &amp; Automation</button>
+        <button class="skill-tab" role="tab" aria-selected="false" data-cat="soft">Communication &amp; Leadership</button>
+      </div>
+
+      <div class="skills-cloud reveal" id="skills-cloud">
+        <!-- pentest -->
+        <span class="tag" data-cat="pentest">Vulnerability Assessment</span>
+        <span class="tag" data-cat="pentest">Network Scanning</span>
+        <span class="tag" data-cat="pentest">Nmap</span>
+        <span class="tag" data-cat="pentest">Metasploit</span>
+        <span class="tag" data-cat="pentest">Burp Suite</span>
+        <span class="tag" data-cat="pentest">Wireshark</span>
+        <span class="tag" data-cat="pentest">Hashcat</span>
+        <span class="tag" data-cat="pentest">Hydra</span>
+        <span class="tag" data-cat="pentest">Netcat</span>
+        <span class="tag" data-cat="pentest">Gobuster</span>
+        <span class="tag" data-cat="pentest">Dirb</span>
+        <span class="tag" data-cat="pentest">Kali Linux</span>
+        <span class="tag" data-cat="pentest">Wireless Security Auditing</span>
+        <span class="tag" data-cat="pentest">Active Directory</span>
+        <span class="tag" data-cat="pentest">Firewall Configuration</span>
+        <span class="tag" data-cat="pentest">Network Design</span>
+        <!-- risk -->
+        <span class="tag" data-cat="risk">Vendor Risk Management</span>
+        <span class="tag" data-cat="risk">SOC 2 Review</span>
+        <span class="tag" data-cat="risk">ISO 27001</span>
+        <span class="tag" data-cat="risk">PCI-DSS</span>
+        <span class="tag" data-cat="risk">PCI ROC Tracking</span>
+        <span class="tag" data-cat="risk">Security Questionnaires</span>
+        <span class="tag" data-cat="risk">Risk Register Management</span>
+        <span class="tag" data-cat="risk">Risk Scoring &amp; SLA Tracking</span>
+        <span class="tag" data-cat="risk">Contract Review</span>
+        <span class="tag" data-cat="risk">Onspring</span>
+        <span class="tag" data-cat="risk">HIPAA</span>
+        <span class="tag" data-cat="risk">OSHA Compliance</span>
+        <!-- dev -->
+        <span class="tag" data-cat="dev">Python</span>
+        <span class="tag" data-cat="dev">JavaScript</span>
+        <span class="tag" data-cat="dev">C#</span>
+        <span class="tag" data-cat="dev">Google Apps Script</span>
+        <span class="tag" data-cat="dev">API Integration</span>
+        <span class="tag" data-cat="dev">AI Prompt Design</span>
+        <span class="tag" data-cat="dev">Process Automation</span>
+        <span class="tag" data-cat="dev">Linux</span>
+        <span class="tag" data-cat="dev">AWS</span>
+        <!-- soft -->
+        <span class="tag" data-cat="soft">Executive Presentations</span>
+        <span class="tag" data-cat="soft">Stakeholder Communication</span>
+        <span class="tag" data-cat="soft">Cross-functional Collaboration</span>
+        <span class="tag" data-cat="soft">Training &amp; Mentoring</span>
+        <span class="tag" data-cat="soft">De-escalation</span>
+        <span class="tag" data-cat="soft">Adaptability</span>
+        <span class="tag" data-cat="soft">Time Management</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <p class="section-kicker reveal">$ git log --oneline ./projects</p>
+      <h2 class="section-title reveal">Projects, professional and personal.</h2>
+
+      <div class="project-grid">
+
+        <article class="project-card project-card--feature reveal">
+          <div class="project-icon"><svg width="22" height="22"><use href="#icon-shield"/></svg></div>
+          <span class="project-tag-pill">Costco IT &middot; Professional</span>
+          <h3>Vendor Compliance Alerting System</h3>
+          <p>A JavaScript / Google Apps Script automation that reads live vendor data from Google Sheets, detects expired compliance documents, writes status updates back to the sheet, and automatically emails vendors to request renewals &mdash; covering 81 PCI ROC vendors that were previously tracked by hand.</p>
+          <div class="project-impact">Part of the automation that cut manual compliance-tracking labor by ~75%, presented directly to Costco's CIO.</div>
+          <div class="project-tags">
+            <span>JavaScript</span><span>Google Apps Script</span><span>Google Sheets API</span><span>Automation</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-icon"><svg width="22" height="22"><use href="#icon-code"/></svg></div>
+          <span class="project-tag-pill">Costco IT &middot; Professional</span>
+          <h3>AI Contract Analysis Tool</h3>
+          <p>Built with Gemini Gems to accelerate review of vendor contracts and security-language clauses, flagging terms that need closer legal or security scrutiny.</p>
+          <div class="project-tags">
+            <span>Gemini</span><span>AI Prompt Design</span><span>Contract Review</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-icon"><svg width="22" height="22"><use href="#icon-users"/></svg></div>
+          <span class="project-tag-pill">Costco IT &middot; Professional</span>
+          <h3>Employee Verification Tool</h3>
+          <p>Cross-checks vendor-submitted personnel documentation against employment status, automating a manual verification process across 900 employees.</p>
+          <div class="project-tags">
+            <span>JavaScript</span><span>Automation</span><span>Compliance</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-icon"><svg width="22" height="22"><use href="#icon-wifi"/></svg></div>
+          <span class="project-tag-pill">Personal</span>
+          <h3>Home Network Wireless Security Audit</h3>
+          <p>Audited my own home Wi-Fi network by capturing EAPOL handshakes and running offline password-strength testing, then used the findings to harden the network's configuration.</p>
+          <div class="project-tags">
+            <span>Wireless Security</span><span>Packet Capture</span><span>Password Auditing</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-icon"><svg width="22" height="22"><use href="#icon-chart"/></svg></div>
+          <span class="project-tag-pill">Personal</span>
+          <h3>Swing Trading Program</h3>
+          <p>A self-taught software project applying RSI and MACD technical indicators to generate trade signals across a Nasdaq-100 stock screening universe, with an AI/ML confirmation layer currently in exploration.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Data Analysis</span><span>Self-Directed</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <p class="section-kicker reveal">$ cat certifications.json</p>
+      <h2 class="section-title reveal">Certifications.</h2>
+
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-icon"><svg width="24" height="24"><use href="#icon-award"/></svg></div>
+          <div>
+            <h3>CompTIA Security+</h3>
+            <p class="cert-status cert-status--progress">In Progress</p>
+            <p>Currently studying toward the exam as part of ongoing security fundamentals training.</p>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon"><svg width="24" height="24"><use href="#icon-award"/></svg></div>
+          <div>
+            <h3>VCCC NCYTE Certificate &mdash; Global Cybersecurity</h3>
+            <p class="cert-status cert-status--done">Completed &middot; Highline College</p>
+            <p>Covers Active Directory management, firewall configuration, network design, and network <strong>defense</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section section-contact" id="contact">
+    <div class="container">
+      <p class="section-kicker reveal">$ ./contact.sh --init</p>
+      <h2 class="section-title reveal">Let's talk risk, security, or the next role.</h2>
+      <p class="section-lede reveal">Open to conversations about vendor risk, compliance analyst, IT risk, and security analyst roles &mdash; and always happy to talk cybersecurity.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <a class="contact-row" href="mailto:lim.oliv9@gmail.com">
+            <span class="contact-icon"><svg width="17" height="17"><use href="#icon-mail"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">lim.oliv9@gmail.com</span>
+            </span>
+          </a>
+          <a class="contact-row" href="tel:+12537090092">
+            <span class="contact-icon"><svg width="17" height="17"><use href="#icon-phone"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">Phone</span>
+              <span class="contact-value">(253) 709-0092</span>
+            </span>
+          </a>
+          <a class="contact-row" href="https://www.linkedin.com/in/oliver-lim-34040a2a3" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon"><svg width="17" height="17"><use href="#icon-linkedin"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">/in/oliver-lim-34040a2a3</span>
+            </span>
+          </a>
+          <div class="contact-row contact-row--static">
+            <span class="contact-icon"><svg width="17" height="17"><use href="#icon-pin"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">Location</span>
+              <span class="contact-value">Tacoma, WA</span>
+            </span>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="form-row-group">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Send message
+            <svg width="16" height="16"><use href="#icon-send"/></svg>
+          </button>
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="logo-mark logo-mark--sm">OL<span class="logo-dot">.</span></span>
+    <p>&copy; <span id="year"></span> Oliver Lim. Built from scratch, deployed with intent.</p>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      <svg width="18" height="18"><use href="#icon-chevron-down" style="transform:rotate(180deg)"/></svg>
+    </button>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

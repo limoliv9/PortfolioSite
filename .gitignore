@@ -1,0 +1,9 @@
+# Raw/original photos (large, unoptimized) — the site only uses img/
+Photos/
+
+# OS cruft
+Thumbs.db
+.DS_Store
+
+# Debug artifacts
+_debug_screenshot.png
