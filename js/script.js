@@ -257,6 +257,34 @@
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
 
+  /* ============ Contact details (assembled on click to deter scrapers) ============ */
+  const contactParts = {
+    email: ['lim.oliv9', 'gmail.com'],
+    phone: ['253', '709', '0092'],
+  };
+  const contactEmail = () => contactParts.email.join('@');
+  const contactInfo = {
+    email: () => ({ href: 'mailto:' + contactEmail(), text: contactEmail() }),
+    phone: () => {
+      const [area, prefix, line] = contactParts.phone;
+      return { href: `tel:+1${area}${prefix}${line}`, text: `(${area}) ${prefix}-${line}` };
+    },
+  };
+
+  document.querySelectorAll('[data-contact]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const { href, text } = contactInfo[link.dataset.contact]();
+      const valueEl = link.querySelector('.contact-value');
+      e.preventDefault();
+      link.href = href;
+      if (valueEl && valueEl.textContent !== text) {
+        valueEl.textContent = text;  // first click reveals; next click opens the app
+      } else {
+        window.location.href = href;
+      }
+    });
+  });
+
   /* ============ Contact form (mailto handoff, no backend) ============ */
   const form = document.getElementById('contact-form');
   const formNote = document.getElementById('form-note');
@@ -274,7 +302,7 @@
 
     const subject = encodeURIComponent(`Portfolio contact from ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:lim.oliv9@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${contactEmail()}?subject=${subject}&body=${body}`;
     formNote.textContent = 'Opening your email client — thanks for reaching out!';
     form.reset();
   });
